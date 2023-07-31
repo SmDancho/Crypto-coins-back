@@ -5,11 +5,11 @@ const getAllCoins = async (req, res) => {
 
   try {
     const options = {
-      url: 'https://coinranking1.p.rapidapi.com/coins',
-      headers: {
-        'X-RapidAPI-Key': process.env.COINS_API_KEY,
-        'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com',
-      },
+      url: 'https://fanated.com/coingecko/mock',
+      // headers: {
+      //   'X-RapidAPI-Key': process.env.COINS_API_KEY,
+      //   'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com',
+      // },
       params: {
         timePeriod,
         orderBy,
@@ -48,7 +48,7 @@ const getPrice = (req, res) => {
 
 const getCurrentCoinPrice = (req, res) => {
   try {
-    const { timePeriod , coinId } = req.query;
+    const { timePeriod, limit, orderDirection, offset, coinId } = req.query;
     const options = {
       url: `https://coinranking1.p.rapidapi.com/coin/${coinId}`,
       headers: {
@@ -62,9 +62,10 @@ const getCurrentCoinPrice = (req, res) => {
         offset,
       },
     };
+
     axios.request(options).then((response) => res.json(response.data));
   } catch (error) {
     return res.json(error);
   }
 };
-module.exports = { getAllCoins, getPrice , getCurrentCoinPrice };
+module.exports = { getAllCoins, getPrice, getCurrentCoinPrice };

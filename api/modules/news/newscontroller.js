@@ -2,7 +2,6 @@ const axios = require('axios');
 
 const getAllnews = async (req, res) => {
   const { pageSize, sortBy, language } = req.query;
-  console.log(req.query);
   const options = {
     method: 'GET',
     url: 'https://newsapi.org/v2/everything',
@@ -19,7 +18,6 @@ const getAllnews = async (req, res) => {
 
 const getsliderNews = async (req, res) => {
   const { pageSize, sortBy, language } = req.query;
-  console.log(req.query);
   const options = {
     method: 'GET',
     url: 'https://newsapi.org/v2/everything',
